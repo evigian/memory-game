@@ -13,8 +13,8 @@ The purpose of this project is to put together our knowledge about HTML, CSS and
 
 ## How to play the game
 
-When the user clicks on a card it flips over and shows a symbol. The goal is to locate the symbols that match and uncover all the matching pairs. Try to finish the game the sooner is possible in order to gain more stars! The live game is here: 
+When the user clicks on a card it flips over and shows a symbol. The goal is to locate the symbols that match and uncover all the matching pairs. Try to finish the game the sooner is possible in order to gain more stars! At the end of the game a modal appears and lets you know in how much time, with how many moves and how many stars you made it! The live game is here: 
 
 ## Dependencies
 
-The starter code for the game was provided by Udacity. 
+The starter code for the game, (HTML, CSS and shuffle function), was provided by Udacity. In order to make it interactive, it was necessary to make some changes on HTML and CSS files and then manipulate the DOM using Javascript. Additional changes were made finally on the styling. A great thank you to all the Udacity students and instructors and their wonderful, supportive community who helped with their knowledge to finish this project.
