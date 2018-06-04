@@ -1,0 +1,389 @@
+html {
+    box-sizing: border-box;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    box-sizing: inherit;
+  }
+  
+  html,
+  body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    background: url(https://image.ibb.co/d7EQ3J/2144.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Lobster', cursive;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  h1 {
+    font-family: 'Lobster', cursive;
+    font-weight: 400;
+    font-size: 33px;
+  }
+  
+  /*
+   * Styles for the deck of cards
+   */
+  
+  .deck {
+    width: 660px;
+    min-height: 680px;
+    background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
+    padding: 32px;
+    border-radius: 10px;
+    box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0 3em;
+  }
+  
+  .deck .card {
+    height: 125px;
+    width: 125px;
+    background: #2e3d49;
+    font-size: 0;
+    color: #ffffff;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+  }
+  
+  .deck .card.open {
+    transform: rotateY(180deg);
+    background: #e25aaa;
+    cursor: default;
+    animation-name: flipInX;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+  }
+  
+  .deck .card.show {
+    font-size: 33px;
+  }
+  
+  .deck .card.match {
+    cursor: default;
+    background: #c0e25a;
+    font-size: 33px;
+    animation-name: swing;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+  }
+  
+  .deck .card.unmatch {
+    cursor: default;
+    background: #e25aaa;
+    font-size: 33px;
+    -webkit-animation-name: shake;
+    animation-name: shake;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+  }
+  
+  .deck .card.disabled {
+    pointer-events: none;
+  }
+  
+  /*
+   * Styles for the Score Panel
+   */
+  
+  .score-panel {
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    width: 345px;
+    margin-bottom: 10px;
+  }
+  
+  .score-panel .stars {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: inline-block;
+    margin: 0 5px 0 0;
+    color: #f9ca09;
+  }
+  
+  .score-panel .stars li {
+    list-style: none;
+    display: inline-block;
+  }
+  
+  .stars-won li {
+    display: inline-block;
+    color: #f9ca09;
+  }
+  
+  .score-panel .restart {
+    float: right;
+    cursor: pointer;
+  }
+  
+  /* MODAL - CODE FROM W3SCHOOLS */
+  .modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+  }
+  
+  /* Modal Content/Box */
+  .modal-content {
+    background-color: #dcebda;
+    text-align: center;
+    font-family: "Comic Sans MS";
+    color: #bb69fd;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border-radius: 10px;
+    border: 4px solid #d2ee6b;
+    width: 35%;
+    height: 30%; /* Could be more or less, depending on screen size */
+  }
+  
+  /* The Close Button */
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .play-again {
+    box-sizing: content-box;
+    background-color: #e75674;
+    color: #fff;
+    padding: 10px 10px;
+    border-radius: 10px;
+    border: 0;
+    font-weight: 500;
+    cursor: pointer;
+    box-shadow: 6px 8px 10px 0 rgba(46, 61, 73, 0.5);
+  }
+  
+  .play-again:hover {
+    background-color: #93f995;
+    color: #e75674;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  /* ANIMATION KEYFRAMES - CODE FROM http://www.theappguruz.com/tag-tools/web/CSSAnimations/ */
+  @-webkit-keyframes flipInX {
+    0% {
+      -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+      transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+      -webkit-transition-timing-function: ease-in;
+      transition-timing-function: ease-in;
+      opacity: 0;
+    }
+    40% {
+      -webkit-transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+      transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+      -webkit-transition-timing-function: ease-in;
+      transition-timing-function: ease-in;
+    }
+    60% {
+      -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+      transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+      opacity: 1;
+    }
+    80% {
+      -webkit-transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+      transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+    }
+    100% {
+      -webkit-transform: perspective(400px);
+      transform: perspective(400px);
+    }
+  }
+  @keyframes flipInX {
+    0% {
+      -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+      transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+      -webkit-transition-timing-function: ease-in;
+      transition-timing-function: ease-in;
+      opacity: 0;
+    }
+    40% {
+      -webkit-transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+      transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+      -webkit-transition-timing-function: ease-in;
+      transition-timing-function: ease-in;
+    }
+    60% {
+      -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+      transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+      opacity: 1;
+    }
+    80% {
+      -webkit-transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+      transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+    }
+    100% {
+      -webkit-transform: perspective(400px);
+      transform: perspective(400px);
+    }
+  }
+  
+  @-webkit-keyframes swing {
+    20% {
+      -webkit-transform: rotate3d(0, 0, 1, 15deg);
+      transform: rotate3d(0, 0, 1, 15deg);
+    }
+    40% {
+      -webkit-transform: rotate3d(0, 0, 1, -10deg);
+      transform: rotate3d(0, 0, 1, -10deg);
+    }
+    60% {
+      -webkit-transform: rotate3d(0, 0, 1, 5deg);
+      transform: rotate3d(0, 0, 1, 5deg);
+    }
+    80% {
+      -webkit-transform: rotate3d(0, 0, 1, -5deg);
+      transform: rotate3d(0, 0, 1, -5deg);
+    }
+    100% {
+      -webkit-transform: rotate3d(0, 0, 1, 0deg);
+      transform: rotate3d(0, 0, 1, 0deg);
+    }
+  }
+  @keyframes swing {
+    20% {
+      -webkit-transform: rotate3d(0, 0, 1, 15deg);
+      transform: rotate3d(0, 0, 1, 15deg);
+    }
+    40% {
+      -webkit-transform: rotate3d(0, 0, 1, -10deg);
+      transform: rotate3d(0, 0, 1, -10deg);
+    }
+    60% {
+      -webkit-transform: rotate3d(0, 0, 1, 5deg);
+      transform: rotate3d(0, 0, 1, 5deg);
+    }
+    80% {
+      -webkit-transform: rotate3d(0, 0, 1, -5deg);
+      transform: rotate3d(0, 0, 1, -5deg);
+    }
+    100% {
+      -webkit-transform: rotate3d(0, 0, 1, 0deg);
+      transform: rotate3d(0, 0, 1, 0deg);
+    }
+  }
+  
+  @-webkit-keyframes shake {
+    0%,
+    100% {
+      -webkit-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
+    }
+    10%,
+    30%,
+    50%,
+    70%,
+    90% {
+      -webkit-transform: translate3d(-10px, 0, 0);
+      transform: translate3d(-10px, 0, 0);
+    }
+    20%,
+    40%,
+    60%,
+    80% {
+      -webkit-transform: translate3d(10px, 0, 0);
+      transform: translate3d(10px, 0, 0);
+    }
+  }
+  @keyframes shake {
+    0%,
+    100% {
+      -webkit-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
+    }
+    10%,
+    30%,
+    50%,
+    70%,
+    90% {
+      -webkit-transform: translate3d(-10px, 0, 0);
+      transform: translate3d(-10px, 0, 0);
+    }
+    20%,
+    40%,
+    60%,
+    80% {
+      -webkit-transform: translate3d(10px, 0, 0);
+      transform: translate3d(10px, 0, 0);
+    }
+  }
+  
+  /* MEDIA QUERIES */
+  @media only screen and (min-width: 150px) and (max-width: 221px) {
+    .deck {
+      justify-content: center;
+    }
+  }
+  
+  @media only screen and (min-width: 222px) and (max-width: 350px) {
+    .stars-won {
+      display: inline;
+    }
+  }
+  
+  @media only screen and (min-width: 351px) and (max-width: 739px) {
+    .deck .card {
+      height: 6rem;
+      width: 6rem;
+    }
+  }
+  
+  @media (min-width: 740px) {
+    .deck {
+      width: 660px;
+      min-height: 680px;
+    }
+  
+    .deck .card {
+      height: 125px;
+      width: 125px;
+    }
+  }
+  
