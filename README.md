@@ -13,7 +13,7 @@ The purpose of this project is to put together our knowledge about HTML, CSS and
 
 ## How to play the game
 
-When the user clicks on a card it flips over and shows a symbol. The goal is to locate the symbols that match and uncover all the matching pairs. Try to finish the game the sooner is possible in order to gain more stars! At the end of the game a modal appears and lets you know in how much time, with how many moves and how many stars you made it! The live game is here: 
+When the user clicks on a card it flips over and shows a symbol. The goal is to locate the symbols that match and uncover all the matching pairs. Try to finish the game the sooner is possible in order to gain more stars! At the end of the game a modal appears and lets you know in how much time, with how many moves and how many stars you made it! The live game is here: https://evigian.github.io/memory-game-project/
 
 ## Dependencies
 
