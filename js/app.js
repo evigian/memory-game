@@ -136,12 +136,12 @@ function gameEnd() {
 // Function to show the modal with the moves, time and star rating
 	function showModal() {
 		let finalMoves = moves.innerHTML;
-		let timeTaken = timer.innerHTML;
+		let finaltime = timer.innerHTML;
 		let finalStarRating = document.querySelector('.stars').innerHTML;
 		modal.style.display = 'block';
 		document.querySelector(
 			'.playing-time'
-		).innerHTML = `You finished the game in ${timeTaken}`;
+		).innerHTML = `You finished the game in ${finaltime}`;
 		document.querySelector(
 			'.game-moves'
 		).innerHTML = `You made ${finalMoves} moves`;
@@ -153,7 +153,7 @@ function gameEnd() {
 	}
 }
 
-// Close the modal
+// Close the modal - code from w3schools
 function closeModal() {
 	closeMod.addEventListener('click', function(e) {
 		modal.style.display = 'none';
