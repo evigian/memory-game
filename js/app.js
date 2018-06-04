@@ -198,11 +198,11 @@ function newGame() {
 	clearInterval(interval);
 	interval = null;
 	moves.innerHTML = 0;
-  timer.innerHTML = `${minute} minutes ${second} seconds`;
+	resetStars();
+	resetCards();
 	second = 0;
 	minute = 0;
-  resetStars();
-  resetCards();
+	timer.innerHTML = `${minute} minutes ${second} seconds`;
 	firstClick = true;
 	openedCards = [];
 	matchedPairs = [];
