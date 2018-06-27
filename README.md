@@ -3,7 +3,7 @@
 ## Table of Contents
 
 * [About](#about)
-* [How to play the game](#howtoplaythegame)
+* [How to play the game](#how-to-play-the-game)
 * [Dependencies](#dependencies)
 
 ## About
